@@ -4,24 +4,31 @@
  */
 package ec.edu.ups.interfazsistemabiblioteca.clases;
 
+import java.awt.TextArea;
 import java.util.ArrayList;
-
 
 /**
  *
  * @author katherine
  */
 public class Controllers {
-    private ArrayList<Autor> autores = new ArrayList<>();
-    
-    public  Autor crearAutor(String cedula, String nombre, String ape,
-                            String tel, int dia, int mes, int anio,
-                            String nacionalidad, String generoLiterario,
-                            String bibliografia) {
-       
-        java.util.Date fNacimie = new java.util.Date(anio - 1900, mes - 1, dia);
 
-       
+    private ArrayList<Autor> autores = new ArrayList<>();
+
+    public ArrayList<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(ArrayList<Autor> autores) {
+        this.autores = autores;
+    }
+
+    public Autor crearAutor(String cedula, String nombre, String ape,
+            String tel, int dia, int mes, int anio,
+            String nacionalidad, String generoLiterario,
+            String bibliografia) {
+
+        java.util.Date fNacimie = new java.util.Date(anio - 1900, mes - 1, dia);
 
         Autor autor = new Autor(cedula, nombre, ape, tel, fNacimie, nacionalidad, generoLiterario, bibliografia);
         autores.add(autor);
@@ -30,4 +37,8 @@ public class Controllers {
         return autor;
     }
 
-}
+    public ArrayList<Autor> mostrarAutor() {
+        
+        return autores;
+    }
+    }

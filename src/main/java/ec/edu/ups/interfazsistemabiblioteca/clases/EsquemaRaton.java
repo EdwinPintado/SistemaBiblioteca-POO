@@ -7,6 +7,7 @@ package ec.edu.ups.interfazsistemabiblioteca.clases;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
@@ -21,50 +22,53 @@ import java.awt.event.MouseListener;
  */
 public class EsquemaRaton implements MouseListener {
 
-    Controllers c = new Controllers();
+    private Controllers con;
     TextField txtDia = new TextField(2);
     TextField txtMes = new TextField(2);
     TextField txtAño = new TextField(4);
+    public EsquemaRaton(Controllers con) {
+    this.con = con;
+}
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
         Frame ventana
                 = new Frame("Ingresar Autor");
-        
+
         ventana.setSize(800, 500);
         ventana.setLayout(new BorderLayout());
         ventana.setBackground(Color.blue);
         Panel panelTitulo = new Panel();
-        Label titulo = new Label("SISTEMA BIBLIOTECA",Label.CENTER);
+        Label titulo = new Label("SISTEMA BIBLIOTECA", Label.CENTER);
+        titulo.setFont(new Font("Arrial", Font.PLAIN, 13));
+
         panelTitulo.add(titulo);
         panelTitulo.setBackground(Color.gray);
-        ventana.add(panelTitulo,BorderLayout.NORTH);
-        
-        Panel menu = new Panel(new GridLayout(6,1));
+        ventana.add(panelTitulo, BorderLayout.NORTH);
+
+        Panel menu = new Panel(new GridLayout(6, 1, 5, 5));
         menu.setBackground(Color.gray);
-        Button b1 = new Button("Registro Autor");
-        b1.setBackground(Color.DARK_GRAY);
-        menu.add(b1);
+
         Button b2 = new Button("Registrar Libros");
         b2.setBackground(Color.DARK_GRAY);
         menu.add(b2);
-        
+
         Button b3 = new Button("Registrar Usuario");
         b3.setBackground(Color.DARK_GRAY);
         menu.add(b3);
-        Button b4 = new Button("Prestamo");
+        Button b4 = new Button("Registro de Prestamo");
         b4.setBackground(Color.DARK_GRAY);
         menu.add(b4);
-        
-        Button b5 = new Button("Devoluciones");
+
+        Button b5 = new Button("Devoluciones de libros");
         b5.setBackground(Color.DARK_GRAY);
         menu.add(b5);
-        
+
         Button c3 = new Button("Cerrar");
         c3.setBackground(Color.gray);
         menu.add(c3);
-        c3.addMouseListener(new MouseListener(){
+        c3.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 ventana.dispose();
@@ -90,20 +94,17 @@ public class EsquemaRaton implements MouseListener {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
-        
-        
-       
-        
-        ventana.add(menu,BorderLayout.WEST);
-        
+
+        ventana.add(menu, BorderLayout.WEST);
+
         Panel ti = new Panel(new BorderLayout());
-        
-        Label titulo1 = new Label("Agregar Autor",Label.CENTER);
+
+        Label titulo1 = new Label("Agregar Autor", Label.CENTER);
         ti.add(titulo1, BorderLayout.NORTH);
-        
-        Panel formulario = new Panel(new GridLayout(9,2,10,10));
+
+        Panel formulario = new Panel(new GridLayout(9, 2, 10, 10));
         formulario.setBackground(Color.gray);
-        
+
         TextField txtCedula
                 = new TextField();
 
@@ -165,15 +166,14 @@ public class EsquemaRaton implements MouseListener {
         formulario.add(guardar);
         formulario.add(cancelar);
         ventana.add(formulario, BorderLayout.CENTER);
-        ti.add(formulario,BorderLayout.CENTER);
-        ventana.add(ti,BorderLayout.CENTER);
-        cancelar.addMouseListener(new MouseListener(){
-            
+        ti.add(formulario, BorderLayout.CENTER);
+        ventana.add(ti, BorderLayout.CENTER);
+        cancelar.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 ventana.dispose();
-           
+
             }
 
             @Override
@@ -195,9 +195,8 @@ public class EsquemaRaton implements MouseListener {
             public void mouseExited(MouseEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-            
+
         });
-        
 
         guardar.addMouseListener(
                 new MouseListener() {
@@ -207,7 +206,7 @@ public class EsquemaRaton implements MouseListener {
                     MouseEvent e) {
 
                 Autor autor
-                        = c.crearAutor(
+                        = con.crearAutor(
                                 txtCedula.getText(),
                                 txtNombre.getText(),
                                 txtApe.getText(),
@@ -247,6 +246,8 @@ public class EsquemaRaton implements MouseListener {
 
     public void mousePressed(
             MouseEvent e) {
+        
+      
     }
 
     public void mouseReleased(

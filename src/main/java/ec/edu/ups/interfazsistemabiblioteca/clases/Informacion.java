@@ -1,0 +1,148 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ec.edu.ups.interfazsistemabiblioteca.clases;
+
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+/**
+ *
+ * @author kevin and Edwin
+ */
+public class Informacion extends MouseAdapter {
+
+    private Controllers con;
+    private TextArea txtArea;
+
+    public Informacion(Controllers con) {
+        this.con = con;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent evento) {
+        Frame ventana
+                = new Frame("Ingresar Autor");
+
+        ventana.setSize(800, 500);
+        ventana.setLayout(new BorderLayout());
+        ventana.setBackground(Color.blue);
+        Panel panelTitulo = new Panel();
+
+        Panel menu = new Panel(new GridLayout(6, 1, 5, 5));
+        menu.setBackground(Color.LIGHT_GRAY);
+        Button b2 = new Button("Registrar Libros");
+        b2.setBackground(Color.LIGHT_GRAY);
+        menu.add(b2);
+
+        Button b3 = new Button("Registrar Usuario");
+        b3.setBackground(Color.LIGHT_GRAY);
+        menu.add(b3);
+        Button b4 = new Button("Registro de Prestamo");
+        b4.setBackground(Color.LIGHT_GRAY);
+        menu.add(b4);
+
+        Button b5 = new Button("Devoluciones de libros");
+        b5.setBackground(Color.LIGHT_GRAY);
+        menu.add(b5);
+
+        Button c3 = new Button("Cerrar");
+        c3.setBackground(Color.LIGHT_GRAY);
+        menu.add(c3);
+
+        c3.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ventana.dispose();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+        ventana.add(menu, BorderLayout.WEST);
+        Label titulo = new Label("Informacion del Autor", Label.CENTER);
+        titulo.setFont(new Font("Arrial", Font.PLAIN, 13));
+        panelTitulo.add(titulo);
+
+        ventana.add(panelTitulo, BorderLayout.NORTH);
+        txtArea = new TextArea();
+        ventana.add(txtArea, BorderLayout.CENTER);
+        Panel panel1 = new Panel();
+
+        Button b1 = new Button("Mostrar");
+        panel1.add(b1);
+        ventana.add(panel1, BorderLayout.SOUTH);
+
+        ventana.setVisible(true);
+
+        b1.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                txtArea.setText("");
+                if (!con.mostrarAutor().isEmpty()) {
+
+                    txtArea.append("TUS AUTORES REGISTRADOS\n\n");
+
+                    for (Autor autor : con.mostrarAutor()) {
+                        txtArea.append(autor.toString() + "\n");
+                    }
+
+                } else {
+                    txtArea.append("No existen autores registrados.");
+                }
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+    }
+
+}
