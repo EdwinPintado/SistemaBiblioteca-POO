@@ -4,6 +4,7 @@
 
 package ec.edu.ups.interfazsistemabiblioteca;
 
+import ec.edu.ups.interfazsistemabiblioteca.clases.EsquemaRaton;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -48,7 +49,9 @@ public class InterfazSistemaBiblioteca {
         Panel miPanel2 = new Panel();
         miPanel2.setLayout(new GridLayout(4,2,5,5));
         miPanel2.setPreferredSize(new Dimension(300,500));
-        miPanel2.add(new Button("Autor"));
+        Button boton1 = new Button("Autor");
+        boton1.addMouseListener(new EsquemaRaton());
+        miPanel2.add(boton1);
         miPanel2.add(new Button("Informacion Autor"));
         miPanel2.add(new Button("Usuario"));
         miPanel2.add(new Button("Informacion Usuario"));
