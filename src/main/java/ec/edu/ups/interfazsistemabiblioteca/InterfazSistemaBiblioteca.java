@@ -17,6 +17,7 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.Point;
 
+
 /**
  *
  * @author katherine
@@ -27,7 +28,8 @@ public class InterfazSistemaBiblioteca {
         Frame miVentana = new Frame();
         miVentana.setSize(500,200);
         miVentana.setTitle("Biblioteca Sistema");
-        miVentana.setBackground(Color.gray);
+        
+        miVentana.setBackground(Color.blue);
         miVentana.setLayout(new BorderLayout());
         Panel miPanel = new Panel(new GridLayout(2,1));
         Label titulo = new Label("Le damos la bienvenida al sistema biblioteca , dirigida a cada estudiante con el objetivo ",Label.CENTER );
@@ -59,7 +61,7 @@ public class InterfazSistemaBiblioteca {
         miPanel2.add(new Button("Informacion Libro"));
         miPanel2.add(new Button("Prestamos"));
         miPanel2.add(new Button("Devoluciones"));
-        Panel c = new Panel(new FlowLayout());
+        Panel c = new Panel(new FlowLayout(FlowLayout.CENTER,20,20));
         c.add(miPanel2);
         
         miVentana.add(miPanel,BorderLayout.NORTH);
@@ -70,4 +72,6 @@ public class InterfazSistemaBiblioteca {
         
         
     }
+    
 }
+
