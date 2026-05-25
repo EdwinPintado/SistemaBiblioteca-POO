@@ -1,12 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 package ec.edu.ups.interfazsistemabiblioteca;
 
 import ec.edu.ups.interfazsistemabiblioteca.clases.Controllers;
 import ec.edu.ups.interfazsistemabiblioteca.clases.EsquemaRaton;
+import ec.edu.ups.interfazsistemabiblioteca.clases.EsquemaRatonLibros;
 import ec.edu.ups.interfazsistemabiblioteca.clases.Informacion;
 import ec.edu.ups.interfazsistemabiblioteca.clases.PrestamosInterfaz;
+import ec.edu.ups.interfazsistemabiblioteca.clases.EsquemaRatonUser;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -21,14 +21,15 @@ import java.awt.Point;
 
 /**
  *
- * @author katherine
+ * @author kevin and Edwin 
  */
+
 public class InterfazSistemaBiblioteca {
 
     public static void main(String[] args) {
         Controllers con = new Controllers();
         Frame miVentana = new Frame();
-        miVentana.setSize(500, 200);
+        miVentana.setSize(700, 700);
         miVentana.setTitle("Biblioteca Sistema");
 
         miVentana.setBackground(Color.blue);
@@ -48,28 +49,43 @@ public class InterfazSistemaBiblioteca {
         titulo2.setForeground(Color.green);
         miVentana.add(miPanel);
         miVentana.setLocation(new Point(100, 200));
-        miVentana.setVisible(true);
 
+        
         Panel miPanel2 = new Panel();
         miPanel2.setLayout(new GridLayout(4, 2, 5, 5));
         miPanel2.setPreferredSize(new Dimension(300, 500));
-        Button boton1 = new Button("Autor");
-
-        boton1.addMouseListener(new EsquemaRaton(con));
-
-        miPanel2.add(boton1);
+        
+        Button boton = new Button("Autor");
+        Button boton2 = new Button("Informacion Autor");
+        Button boton3 = new Button("Libro");
+        Button boton4 = new Button("Informacion Libros");
+        Button boton5 = new Button("Usuario");
+        Button boton6 = new Button("Informacion Usuario");
+        
+        boton.addMouseListener(new EsquemaRaton(con));
+        miPanel2.add(boton);
         Panel mipanel3 = new Panel();
         mipanel3.setLayout(new GridLayout(300, 500));
         mipanel3.setPreferredSize(new Dimension(300, 500));
-        Button boton2 = new Button("Informacion Autor");
-        
         boton2.addMouseListener(new Informacion(con));
         miPanel2.add(boton2);
 
-        miPanel2.add(new Button("Usuario"));
-        miPanel2.add(new Button("Informacion Usuario"));
-        miPanel2.add(new Button("Libro"));
-        miPanel2.add(new Button("Informacion Libro"));
+        boton3.addMouseListener(new EsquemaRatonLibros(con));
+        miPanel2.add(boton3);
+        Panel mipanel4 = new Panel();
+        mipanel4.setLayout(new GridLayout(300, 500));
+        mipanel4.setPreferredSize(new Dimension(300, 500));
+        boton4.addMouseListener(new Informacion(con));
+        miPanel2.add(boton4);
+
+        boton5.addMouseListener(new EsquemaRatonUser(con)); 
+        miPanel2.add(boton5);
+        Panel mipanel5 = new Panel();
+        mipanel5.setLayout(new GridLayout(300, 500));
+        mipanel5.setPreferredSize(new Dimension(300, 500));
+        boton6.addMouseListener(new Informacion(con));
+        miPanel2.add(boton6);
+
         Panel mipanel7 = new Panel();
         mipanel7.setLayout(new GridLayout(300,500));
         mipanel7.setPreferredSize(new Dimension(300,500));
@@ -82,7 +98,7 @@ public class InterfazSistemaBiblioteca {
 
         miVentana.add(miPanel, BorderLayout.NORTH);
         miVentana.add(c, BorderLayout.CENTER);
-
+        miVentana.setVisible(true);
     }
 
 }

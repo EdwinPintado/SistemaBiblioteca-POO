@@ -1,15 +1,12 @@
 package ec.edu.ups.interfazsistemabiblioteca.clases;
 
-
-
-
 import ec.edu.ups.interfazsistemabiblioteca.clases.Persona;
 import java.util.Date;
 
 /**
  *
  * @author kevin and Edwin 
- */
+ */ 
 
 public class Bibliotecario extends Persona {
 

@@ -18,13 +18,13 @@ import java.awt.event.MouseListener;
  * @author kevin and Edwin 
  */
 
-public class EsquemaRaton implements MouseListener {
-
+public class EsquemaRatonUser implements MouseListener{
+    
     private Controllers con;
     TextField txtDia = new TextField(2);
     TextField txtMes = new TextField(2);
     TextField txtAño = new TextField(4);
-    public EsquemaRaton(Controllers con) {
+    public EsquemaRatonUser(Controllers con) {
     this.con = con;
 }
 
@@ -32,7 +32,7 @@ public class EsquemaRaton implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         Frame ventana
-                = new Frame("Ingresar Autor");
+                = new Frame("Ingresar Usuario");
 
         ventana.setSize(800, 500);
         ventana.setLayout(new BorderLayout());
@@ -52,7 +52,7 @@ public class EsquemaRaton implements MouseListener {
         b2.setBackground(Color.DARK_GRAY);
         menu.add(b2);
 
-        Button b3 = new Button("Registrar Usuario");
+        Button b3 = new Button("Registrar Libros");
         b3.setBackground(Color.DARK_GRAY);
         menu.add(b3);
         Button b4 = new Button("Registro de Prestamo");
@@ -97,7 +97,7 @@ public class EsquemaRaton implements MouseListener {
 
         Panel ti = new Panel(new BorderLayout());
 
-        Label titulo1 = new Label("Agregar Autor", Label.CENTER);
+        Label titulo1 = new Label("Agregar Usuario", Label.CENTER);
         ti.add(titulo1, BorderLayout.NORTH);
 
         Panel formulario = new Panel(new GridLayout(9, 2, 10, 10));
@@ -115,11 +115,9 @@ public class EsquemaRaton implements MouseListener {
         TextField txtTel
                 = new TextField();
 
-        TextField txtNacionalidad
+        TextField txtCorreoElectronico
                 = new TextField();
-        TextField txtGeneroLiterario
-                = new TextField();
-        TextField txtBibliografia
+        TextField txtDireccion
                 = new TextField();
         Panel fechaPanel = new Panel();
         fechaPanel.add(txtDia);
@@ -149,17 +147,16 @@ public class EsquemaRaton implements MouseListener {
         formulario.add(
                 new Label("Telefono"));
         formulario.add(txtTel);
+        
         formulario.add(new Label("Fecha"));
         formulario.add(fechaPanel);
 
         formulario.add(
-                new Label("Nacionalidad"));
-        formulario.add(txtNacionalidad);
+                new Label("CorreoElectronico"));
+        formulario.add(txtCorreoElectronico);
 
-        formulario.add(new Label("Genero Literario"));
-        formulario.add(txtGeneroLiterario);
-        formulario.add(new Label("Bibliografia"));
-        formulario.add(txtBibliografia);
+        formulario.add(new Label("Direccion"));
+        formulario.add(txtDireccion);
 
         formulario.add(guardar);
         formulario.add(cancelar);
@@ -203,21 +200,20 @@ public class EsquemaRaton implements MouseListener {
             public void mouseClicked(
                     MouseEvent e) {
 
-                Autor autor
-                        = con.crearAutor(
+                Usuario usuario
+                        = con.crearUsuario(
                                 txtCedula.getText(),
                                 txtNombre.getText(),
                                 txtApe.getText(),
                                 txtTel.getText(),
                                 Integer.parseInt(txtDia.getText()), Integer.parseInt(txtMes.getText()), Integer.parseInt(txtAño.getText()),
-                                txtNacionalidad.getText(),
-                                txtGeneroLiterario.getText(),
-                                txtBibliografia.getText()
+                                txtCorreoElectronico.getText(),
+                                txtDireccion.getText()
                         );
 
                 System.out.println(
                         "Guardado: "
-                        + autor.getNombre());
+                        + usuario.getNombre());
 
                 ventana.dispose();
             }
@@ -259,9 +255,5 @@ public class EsquemaRaton implements MouseListener {
     public void mouseExited(
             MouseEvent e) {
     }
-    
-    
-    
-    
     
 }

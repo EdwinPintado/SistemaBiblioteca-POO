@@ -3,6 +3,7 @@ package ec.edu.ups.interfazsistemabiblioteca.clases;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
@@ -18,21 +19,21 @@ import java.awt.event.MouseListener;
  * @author kevin and Edwin 
  */
 
-public class EsquemaRaton implements MouseListener {
-
+public class EsquemaRatonLibros implements MouseListener{
+   
     private Controllers con;
     TextField txtDia = new TextField(2);
     TextField txtMes = new TextField(2);
     TextField txtAño = new TextField(4);
-    public EsquemaRaton(Controllers con) {
+    public EsquemaRatonLibros(Controllers con) {
     this.con = con;
-}
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
         Frame ventana
-                = new Frame("Ingresar Autor");
+                = new Frame("Ingresar Libros");
 
         ventana.setSize(800, 500);
         ventana.setLayout(new BorderLayout());
@@ -48,25 +49,25 @@ public class EsquemaRaton implements MouseListener {
         Panel menu = new Panel(new GridLayout(6, 1, 5, 5));
         menu.setBackground(Color.gray);
 
-        Button b2 = new Button("Registrar Libros");
-        b2.setBackground(Color.DARK_GRAY);
-        menu.add(b2);
-
-        Button b3 = new Button("Registrar Usuario");
+        Button b3 = new Button("Registrar Autor");
         b3.setBackground(Color.DARK_GRAY);
         menu.add(b3);
-        Button b4 = new Button("Registro de Prestamo");
+
+        Button b4 = new Button("Registrar Libros");
         b4.setBackground(Color.DARK_GRAY);
         menu.add(b4);
-
-        Button b5 = new Button("Devoluciones de libros");
+        Button b5 = new Button("Registro de Prestamo");
         b5.setBackground(Color.DARK_GRAY);
         menu.add(b5);
 
-        Button c3 = new Button("Cerrar");
-        c3.setBackground(Color.gray);
-        menu.add(c3);
-        c3.addMouseListener(new MouseListener() {
+        Button b6 = new Button("Devoluciones de libros");
+        b6.setBackground(Color.DARK_GRAY);
+        menu.add(b6);
+
+        Button c4 = new Button("Cerrar");
+        c4.setBackground(Color.gray);
+        menu.add(c4);
+        c4.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 ventana.dispose();
@@ -97,29 +98,25 @@ public class EsquemaRaton implements MouseListener {
 
         Panel ti = new Panel(new BorderLayout());
 
-        Label titulo1 = new Label("Agregar Autor", Label.CENTER);
+        Label titulo1 = new Label("Agregar Libro", Label.CENTER);
         ti.add(titulo1, BorderLayout.NORTH);
 
         Panel formulario = new Panel(new GridLayout(9, 2, 10, 10));
         formulario.setBackground(Color.gray);
 
-        TextField txtCedula
+        TextField txtISBN
                 = new TextField();
 
-        TextField txtNombre
+        TextField txtTitulo
                 = new TextField();
 
-        TextField txtApe
+        TextField txtEditorial
                 = new TextField();
 
-        TextField txtTel
+        TextField txtDisponible
                 = new TextField();
 
-        TextField txtNacionalidad
-                = new TextField();
-        TextField txtGeneroLiterario
-                = new TextField();
-        TextField txtBibliografia
+        TextField txtAutor
                 = new TextField();
         Panel fechaPanel = new Panel();
         fechaPanel.add(txtDia);
@@ -135,31 +132,26 @@ public class EsquemaRaton implements MouseListener {
         Button cancelar = new Button("Cancelar");
 
         formulario.add(
-                new Label("Cedula"));
-        formulario.add(txtCedula);
+                new Label("ISBN"));
+        formulario.add(txtISBN);
 
         formulario.add(
-                new Label("Nombre"));
-        formulario.add(txtNombre);
+                new Label("Titulo"));
+        formulario.add(txtTitulo);
 
         formulario.add(
-                new Label("Apellido"));
-        formulario.add(txtApe);
-
-        formulario.add(
-                new Label("Telefono"));
-        formulario.add(txtTel);
+                new Label("Editorial"));
+        formulario.add(txtEditorial);
+        
         formulario.add(new Label("Fecha"));
         formulario.add(fechaPanel);
 
         formulario.add(
-                new Label("Nacionalidad"));
-        formulario.add(txtNacionalidad);
+                new Label("Disponible"));
+        formulario.add(txtDisponible);
 
-        formulario.add(new Label("Genero Literario"));
-        formulario.add(txtGeneroLiterario);
-        formulario.add(new Label("Bibliografia"));
-        formulario.add(txtBibliografia);
+        formulario.add(new Label("Autor"));
+        formulario.add(txtAutor);
 
         formulario.add(guardar);
         formulario.add(cancelar);
@@ -196,28 +188,29 @@ public class EsquemaRaton implements MouseListener {
 
         });
 
-        guardar.addMouseListener(
-                new MouseListener() {
+        guardar.addMouseListener(new MouseListener() {
 
             @Override
-            public void mouseClicked(
-                    MouseEvent e) {
+            public void mouseClicked(MouseEvent e) {
 
-                Autor autor
-                        = con.crearAutor(
-                                txtCedula.getText(),
-                                txtNombre.getText(),
-                                txtApe.getText(),
-                                txtTel.getText(),
+                String nombreAutor = txtAutor.getText();
+
+                Autor autor = new Autor();
+                autor.setNombre(nombreAutor);
+                
+                Libro libro
+                        = con.crearLibro(
+                                txtISBN.getText(),
+                                txtTitulo.getText(),
+                                txtEditorial.getText(),
                                 Integer.parseInt(txtDia.getText()), Integer.parseInt(txtMes.getText()), Integer.parseInt(txtAño.getText()),
-                                txtNacionalidad.getText(),
-                                txtGeneroLiterario.getText(),
-                                txtBibliografia.getText()
+                                Boolean.parseBoolean(txtDisponible.getText()),
+                                autor
                         );
 
                 System.out.println(
                         "Guardado: "
-                        + autor.getNombre());
+                        + libro.getTitulo());
 
                 ventana.dispose();
             }
@@ -259,9 +252,5 @@ public class EsquemaRaton implements MouseListener {
     public void mouseExited(
             MouseEvent e) {
     }
-    
-    
-    
-    
     
 }

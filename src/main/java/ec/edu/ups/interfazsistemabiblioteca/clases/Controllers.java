@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ec.edu.ups.interfazsistemabiblioteca.clases;
 
 import java.awt.TextArea;
@@ -13,13 +10,19 @@ import java.util.List;
 
 /**
  *
- * @author katherine
+ * @author kevin and Edwin 
  */
+
 public class Controllers {
 
     private ArrayList<Autor> autores = new ArrayList<>();
+    private ArrayList<Libro> libros = new ArrayList<>();
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<Bibliotecario> bibliotecarios = new ArrayList<>();
     private List<Prestamo> prestamos = new ArrayList<>();
 
+    // AUTOR
+    
     public ArrayList<Autor> getAutores() {
         return autores;
     }
@@ -46,7 +49,93 @@ public class Controllers {
 
         return autores;
     }
+    
+    // LIBROS
+    
+    public ArrayList<Libro> getLibros() {
+        return libros;
+    }
 
+    public void setLibros(ArrayList<Libro> libros) {
+        this.libros = libros;
+    }
+    
+    public Libro crearLibro(String ISBN, String Titulo, String Editorial,
+           int dia, int mes, int anio,
+           boolean disponible, Autor autor) {
+
+        java.util.Date anioPublicacion = new java.util.Date(anio - 1900, mes - 1, dia);
+
+        Libro libro = new Libro(ISBN, Titulo, Editorial, (java.sql.Date) anioPublicacion, disponible, autor);
+        libros.add(libro);
+
+        System.out.println("Se guardo su libro :) ");
+        return libro;
+    }
+
+    public ArrayList<Libro> mostrarLibro() {
+
+        return libros;
+    }
+    
+    // USUARIO
+    
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Usuario crearUsuario(String cedula, String nombre, String ape,
+            String tel, int dia, int mes, int anio,
+            String correoElectronico, String direccion) {
+
+        java.util.Date fNacimie = new java.util.Date(anio - 1900, mes - 1, dia);
+
+        Usuario usuario = new Usuario(cedula, nombre, ape, tel, fNacimie, correoElectronico, direccion);
+        usuarios.add(usuario);
+
+        System.out.println("Se guardo su usuario :) ");
+        return usuario;
+    }
+
+    public ArrayList<Usuario> mostrarUsuario() {
+        return usuarios;
+    }
+    
+    // BIBLIOTECARIO
+    
+    public ArrayList<Bibliotecario> getBibliotecarios() {
+        return bibliotecarios;
+    }
+
+    public void setiBibliotecarios(ArrayList<Bibliotecario> bibliotecarios) {
+        this.bibliotecarios = bibliotecarios;
+    }
+
+    public Bibliotecario crearBibliotecario(String cedula, String nombre, String ape,
+            String tel, int dia, int mes, int anio,
+            String codigo, String turno,
+            String cargo) {
+
+        java.util.Date fNacimie = new java.util.Date(anio - 1900, mes - 1, dia);
+
+        Bibliotecario bibliotecario = new Bibliotecario(cedula, nombre, ape, tel, fNacimie, codigo, turno, cargo);
+        bibliotecarios.add(bibliotecario);
+
+        System.out.println("Se guardo su bibliotecario :) ");
+        return bibliotecario;
+    }
+
+    public ArrayList<Bibliotecario> mostrarBibliotecario() {
+
+        return bibliotecarios;
+    }
+
+    // PRESTAMO
+    
     public Prestamo crearPrestamo(int dia,
             int mes,
             int anio,

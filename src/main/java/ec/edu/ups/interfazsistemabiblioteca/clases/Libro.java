@@ -2,6 +2,7 @@
 package ec.edu.ups.interfazsistemabiblioteca.clases;
 
 import ec.edu.ups.interfazsistemabiblioteca.clases.Autor;
+import java.sql.Date;
 
 /**
  *
@@ -13,7 +14,7 @@ public class Libro {
     private String isbn;
     private String titulo;
     private String editorial;
-    private String anioPublicacion;
+    private Date anioPublicacion;
     
     private boolean disponible;
     private Autor autor;
@@ -21,14 +22,14 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(String isbn, String titulo, String editorial, String anioPublicacion) {
+    public Libro(String isbn, String titulo, String editorial, Date anioPublicacion) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.editorial = editorial;
         this.anioPublicacion = anioPublicacion;
     }
 
-    public Libro(String isbn, String titulo, String editorial, String anioPublicacion, boolean disponible, Autor autor) {
+    public Libro(String isbn, String titulo, String editorial, Date anioPublicacion, boolean disponible, Autor autor) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.editorial = editorial;
@@ -63,11 +64,11 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public String getAnioPublicacion() {
+    public Date getAnioPublicacion() {
         return anioPublicacion;
     }
 
-    public void setAnioPublicacion(String anioPublicacion) {
+    public void setAnioPublicacion(Date anioPublicacion) {
         this.anioPublicacion = anioPublicacion;
     }
 
