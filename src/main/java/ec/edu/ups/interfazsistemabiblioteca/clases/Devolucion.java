@@ -1,3 +1,4 @@
+
 package ec.edu.ups.interfazsistemabiblioteca.clases;
 
 import java.awt.BorderLayout;
@@ -34,9 +35,9 @@ public class Devolucion extends MouseAdapter {
     TextField txtCedula = new TextField();
     TextField txtISBN = new TextField();
 
-    TextField txtDia = new TextField();
-    TextField txtMes = new TextField();
-    TextField txtAño = new TextField();
+    TextField txtDia = new TextField(2);
+    TextField txtMes = new TextField(2);
+    TextField txtAño = new TextField(4);
 
     @Override
     public void mouseClicked(MouseEvent evento) {
@@ -49,13 +50,14 @@ public class Devolucion extends MouseAdapter {
 
         Panel menu = new Panel(new GridLayout(6, 1, 5, 5));
         menu.setBackground(Color.LIGHT_GRAY);
-        
+
         Button cerrar = new Button("Cerrar");
-        
-        cerrar.addMouseListener(new MouseListener(){
+        cerrar.setBackground(Color.DARK_GRAY);
+
+        cerrar.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-             ventana.dispose();
+                ventana.dispose();
             }
 
             @Override
@@ -77,18 +79,22 @@ public class Devolucion extends MouseAdapter {
             public void mouseExited(MouseEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-            
+
         });
         Button b1 = new Button("Registrar Libros");
         b1.addMouseListener(new EsquemaRatonLibros(con));
+        b1.setBackground(Color.DARK_GRAY);
         menu.add(b1);
         Button b2 = new Button("Registrar Usuario");
         b2.addMouseListener(new EsquemaRatonUser(con));
+        b2.setBackground(Color.DARK_GRAY);
         menu.add(b2);
         Button autor = new Button("Registrar Autor");
+        autor.setBackground(Color.DARK_GRAY);
         autor.addMouseListener(new EsquemaRaton(con));
         menu.add(autor);
         Button pre = new Button("Prestamos");
+        pre.setBackground(Color.DARK_GRAY);
         pre.addMouseListener(new PrestamosInterfaz(con));
         menu.add(pre);
 
@@ -108,20 +114,39 @@ public class Devolucion extends MouseAdapter {
         Panel panelForm = new Panel();
         panelForm.setLayout(new GridLayout(2, 1, 10, 10));
 
-        Panel fila = new Panel(new GridLayout(2,1));
-        Label l1 = new Label("Ingrese la cedula");
-        Label l3 = new Label("Ingrese el ISBN del libro");
-        Label l4 = new Label("Fecha de devolucion");
-        Panel fechaPanel = new Panel();
-        fechaPanel.add(txtDia);
-        fechaPanel.add(new Label("/"));
+        Panel fila = new Panel(new GridLayout(3, 2, 10, 10));
 
-        fechaPanel.add(txtMes);
-        fechaPanel.add(new Label("/"));
 
-        fechaPanel.add(txtAño);
-        
-        
+        Panel p1 = new Panel(new FlowLayout(FlowLayout.LEFT));
+        p1.add(new Label("Ingrese la cedula"));
+
+        txtCedula.setColumns(10);
+        p1.add(txtCedula);
+
+        Panel p2 = new Panel(new FlowLayout(FlowLayout.LEFT));
+        p2.add(new Label("Ingrese ISBN"));
+
+        txtISBN.setColumns(10);
+        p2.add(txtISBN);
+
+        Panel p3 = new Panel(new FlowLayout(FlowLayout.LEFT));
+        p3.add(new Label("Fecha devolucion"));
+
+        txtDia.setColumns(2);
+        txtMes.setColumns(2);
+        txtAño.setColumns(4);
+
+        p3.add(txtDia);
+        p3.add(new Label("/"));
+        p3.add(txtMes);
+        p3.add(new Label("/"));
+        p3.add(txtAño);
+
+        fila.add(p1);
+        fila.add(p2);
+        fila.add(p3);
+
+        ventana.add(fila, BorderLayout.CENTER);
         Panel l2 = new Panel(new GridLayout(1, 2, 10, 10));
 
         Button guardar = new Button("Registrar");
@@ -151,18 +176,11 @@ public class Devolucion extends MouseAdapter {
             }
         });
 
-        fila.add(l1);
-        fila.add(txtCedula);
-        fila.add(l3);
-        fila.add(txtISBN);
-        fila.add(l4);
-        fila.add(fechaPanel);
-     
+        ventana.add(fila, BorderLayout.CENTER);
         l2.add(guardar);
         l2.add(cerar);
 
         ventana.add(l2, BorderLayout.SOUTH);
-        ventana.add(fila, BorderLayout.CENTER);
 
         guardar.addMouseListener(new MouseListener() {
 
@@ -204,3 +222,4 @@ public class Devolucion extends MouseAdapter {
     }
 
 }
+

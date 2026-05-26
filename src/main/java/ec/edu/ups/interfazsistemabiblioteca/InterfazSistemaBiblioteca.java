@@ -31,7 +31,7 @@ import java.awt.event.MouseListener;
 
 /**
  *
- * @author kevin and Edwin
+ * @author katherine
  */
 public class InterfazSistemaBiblioteca implements MouseListener{
 

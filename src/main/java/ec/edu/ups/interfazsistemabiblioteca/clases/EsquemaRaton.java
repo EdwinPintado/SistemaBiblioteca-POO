@@ -52,10 +52,12 @@ public class EsquemaRaton implements MouseListener {
 
         Button b2 = new Button("Registrar Libros");
         b2.setBackground(Color.DARK_GRAY);
+        b2.addMouseListener(new EsquemaRatonLibros(con) );
         menu.add(b2);
 
         Button b3 = new Button("Registrar Usuario");
         b3.setBackground(Color.DARK_GRAY);
+        b3.addMouseListener(new EsquemaRatonUser(con));
         
         menu.add(b3);
         Button b4 = new Button("Registro de Prestamo");

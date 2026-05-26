@@ -148,4 +148,3 @@ public class InformacionU extends MouseAdapter {
     }
 
 }
-

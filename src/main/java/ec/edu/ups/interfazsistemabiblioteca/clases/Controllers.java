@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author kevin and Edwin
+ * @author katherine
  */
 public class Controllers {
     
@@ -118,7 +118,7 @@ public class Controllers {
 
         java.util.Date anioPublicacion = new java.util.Date(anio - 1900, mes - 1, dia);
 
-        Libro libro = new Libro(ISBN, Titulo, Editorial, (java.sql.Date) anioPublicacion, disponible, autor);
+        Libro libro = new Libro(ISBN, Titulo, Editorial, anioPublicacion, disponible, autor);
         libros.add(libro);
 
         System.out.println("Se guardo su libro :) ");

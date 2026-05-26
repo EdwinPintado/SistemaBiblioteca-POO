@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author kevin and Edwin
- */
-
 public class Usuario extends Persona {
 
     private String correoElectronico;
