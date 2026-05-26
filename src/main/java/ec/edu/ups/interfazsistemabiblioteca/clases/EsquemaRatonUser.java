@@ -39,8 +39,8 @@ public class EsquemaRatonUser implements MouseListener{
         ventana.setLayout(new BorderLayout());
         ventana.setBackground(Color.blue);
         Panel panelTitulo = new Panel();
-        Label titulo = new Label("SISTEMA BIBLIOTECA", Label.CENTER);
-        titulo.setFont(new Font("Arrial", Font.PLAIN, 13));
+        Label titulo = new Label("REGISTRO USUARIO", Label.CENTER);
+        titulo.setFont(new Font("Arrial", Font.PLAIN, 20));
 
         panelTitulo.add(titulo);
         panelTitulo.setBackground(Color.gray);

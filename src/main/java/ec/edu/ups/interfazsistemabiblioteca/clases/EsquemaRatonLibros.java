@@ -1,4 +1,3 @@
-
 package ec.edu.ups.interfazsistemabiblioteca.clases;
 
 import java.awt.BorderLayout;
@@ -17,17 +16,17 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author kevin and Edwin 
+ * @author kevin and Edwin
  */
+public class EsquemaRatonLibros implements MouseListener {
 
-public class EsquemaRatonLibros implements MouseListener{
-   
     private Controllers con;
     TextField txtDia = new TextField(2);
     TextField txtMes = new TextField(2);
     TextField txtAño = new TextField(4);
+
     public EsquemaRatonLibros(Controllers con) {
-    this.con = con;
+        this.con = con;
     }
 
     @Override
@@ -40,7 +39,7 @@ public class EsquemaRatonLibros implements MouseListener{
         ventana.setLayout(new BorderLayout());
         ventana.setBackground(Color.blue);
         Panel panelTitulo = new Panel();
-        Label titulo = new Label("SISTEMA BIBLIOTECA", Label.CENTER);
+        Label titulo = new Label("REGISTRO LIBRO", Label.CENTER);
         titulo.setFont(new Font("Arrial", Font.PLAIN, 20));
 
         panelTitulo.add(titulo);
@@ -80,17 +79,17 @@ public class EsquemaRatonLibros implements MouseListener{
 
             @Override
             public void mousePressed(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); 
+                throw new UnsupportedOperationException("Not supported yet.");
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); 
+                throw new UnsupportedOperationException("Not supported yet.");
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); 
+                throw new UnsupportedOperationException("Not supported yet.");
             }
 
             @Override
@@ -100,8 +99,6 @@ public class EsquemaRatonLibros implements MouseListener{
         });
 
         ventana.add(menu, BorderLayout.WEST);
-
-        
 
         Panel formulario = new Panel(new GridLayout(9, 2, 10, 10));
         formulario.setBackground(Color.gray);
@@ -144,21 +141,21 @@ public class EsquemaRatonLibros implements MouseListener{
         formulario.add(
                 new Label("Editorial"));
         formulario.add(txtEditorial);
-        
+
         formulario.add(new Label("Fecha"));
         formulario.add(fechaPanel);
 
-        formulario.add(
-                new Label("Disponible"));
-        formulario.add(txtDisponible);
-
         formulario.add(new Label("Autor"));
         formulario.add(txtAutor);
-
-        formulario.add(guardar);
-        formulario.add(cancelar);
+        Panel mi = new Panel(new GridLayout(1, 2, 10, 10));
+        mi.add(guardar);
+ 
+       mi.add(cancelar);
+        
+       ventana.add(mi,BorderLayout.SOUTH);
         ventana.add(formulario, BorderLayout.CENTER);
         
+
         cancelar.addMouseListener(new MouseListener() {
 
             @Override
@@ -174,17 +171,17 @@ public class EsquemaRatonLibros implements MouseListener{
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); 
+                throw new UnsupportedOperationException("Not supported yet.");
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); 
+                throw new UnsupportedOperationException("Not supported yet.");
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); 
+                throw new UnsupportedOperationException("Not supported yet.");
             }
 
         });
@@ -198,19 +195,17 @@ public class EsquemaRatonLibros implements MouseListener{
 
                 Autor autor = new Autor();
                 autor.setNombre(nombreAutor);
-                
+
                 Libro libro
                         = con.crearLibro(
                                 txtISBN.getText(),
                                 txtTitulo.getText(),
                                 txtEditorial.getText(),
                                 Integer.parseInt(txtDia.getText()), Integer.parseInt(txtMes.getText()), Integer.parseInt(txtAño.getText()),
-                                Boolean.parseBoolean(txtDisponible.getText()),
                                 autor
                         );
 
-                 JOptionPane.showMessageDialog(null, "Libro Guardado");
-                        
+                JOptionPane.showMessageDialog(null, "Libro Guardado");
 
                 ventana.dispose();
             }
@@ -237,8 +232,7 @@ public class EsquemaRatonLibros implements MouseListener{
 
     public void mousePressed(
             MouseEvent e) {
-        
-      
+
     }
 
     public void mouseReleased(
@@ -252,5 +246,5 @@ public class EsquemaRatonLibros implements MouseListener{
     public void mouseExited(
             MouseEvent e) {
     }
-    
+
 }

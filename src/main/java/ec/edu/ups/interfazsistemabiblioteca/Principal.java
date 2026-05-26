@@ -67,5 +67,7 @@ public class Principal {
         panel.add(salir);
         ventanita.add(panel);
         ventanita.setVisible(true);
+        
     }
 }
+

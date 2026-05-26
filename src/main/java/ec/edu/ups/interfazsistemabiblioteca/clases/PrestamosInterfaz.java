@@ -120,12 +120,6 @@ public class PrestamosInterfaz extends MouseAdapter {
         txtIsbn.setPreferredSize(new Dimension(250, 30));
         filaIsbn.add(txtIsbn);
 
-        Panel filaBibliotecario = new Panel(new FlowLayout(FlowLayout.LEFT));
-
-        filaBibliotecario.add(new Label("Bibliotecario:"));
-        TextField txtBibliotecario = new TextField(30);
-        filaBibliotecario.add(txtBibliotecario);
-
         Panel filaFechaLimite = new Panel(new FlowLayout(FlowLayout.LEFT));
 
         filaFechaLimite.add(new Label("Fecha limite:"));
@@ -136,16 +130,44 @@ public class PrestamosInterfaz extends MouseAdapter {
         filaFechaLimite.add(txtAño2);
 
         Button guardar = new Button("Guardar Prestamo");
+        Button cancelar = new Button("Cancelar");
+        cancelar.addMouseListener(new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ventana.dispose();
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+            
+        });
         Panel filaBoton = new Panel();
         filaBoton.add(guardar);
+        filaBoton.add(cancelar);
 
         panelForm.add(filaCedula);
         panelForm.add(filaFecha);
         panelForm.add(filaAutor);
         panelForm.add(filaLibro);
         panelForm.add(filaIsbn);
-        panelForm.add(filaBibliotecario);
+        
         panelForm.add(filaFechaLimite);
 
         ventana.add(panelForm, BorderLayout.CENTER);
@@ -183,7 +205,7 @@ public class PrestamosInterfaz extends MouseAdapter {
                 String nombreAutor = txtAutor.getText();
                 String tituloLibro = txtLibro.getText();
                 String isbn = txtIsbn.getText();
-                String nombreBibliotecario = txtBibliotecario.getText();
+                
                 String cedula = txtCedula.getText();
 
                 Usuario usuario = new Usuario();
@@ -201,8 +223,7 @@ public class PrestamosInterfaz extends MouseAdapter {
                 List<Libro> libros = new ArrayList<>();
                 libros.add(libro);
 
-                Bibliotecario bibliotecario = new Bibliotecario();
-                bibliotecario.setNombre(nombreBibliotecario);
+                
 
                 Prestamo prestamo = con.crearPrestamo(
                         Integer.parseInt(txtDia.getText()),
@@ -211,7 +232,7 @@ public class PrestamosInterfaz extends MouseAdapter {
                         Integer.parseInt(txtDia1.getText()),
                         Integer.parseInt(txtMes2.getText()),
                         Integer.parseInt(txtAño2.getText()),
-                        bibliotecario,
+           
                         usuario, 
                         libros
                 );
@@ -236,4 +257,5 @@ public class PrestamosInterfaz extends MouseAdapter {
     }
 
 }
+
 

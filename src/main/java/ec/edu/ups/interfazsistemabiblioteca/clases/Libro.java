@@ -29,12 +29,12 @@ public class Libro {
         this.anioPublicacion = anioPublicacion;
     }
 
-    public Libro(String isbn, String titulo, String editorial, Date anioPublicacion, boolean disponible, Autor autor) {
+    public Libro(String isbn, String titulo, String editorial, Date anioPublicacion,  Autor autor) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.editorial = editorial;
         this.anioPublicacion = anioPublicacion;
-        this.disponible = disponible;
+       
         this.autor = autor;
         
         this.disponible = true;
@@ -91,6 +91,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro con " + "ISBN: " + isbn + "\ntitulo: " + titulo + "\neditorial: " + editorial + "\nanioPublicacion: " + anioPublicacion + "\nautor: " + autor + "\n";
+        return "Libro con " + "ISBN: " + isbn + "\ntitulo: " + titulo + "\neditorial: " + editorial + "\nanioPublicacion: " + anioPublicacion + "\nautor: " + autor.getNombre() + "\n";
     } 
 }

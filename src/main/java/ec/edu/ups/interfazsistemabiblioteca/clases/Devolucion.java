@@ -192,6 +192,7 @@ public class Devolucion extends MouseAdapter {
                     boolean existe = con.registrarDevolucion(prestamo);
                     if (existe) {
                         JOptionPane.showMessageDialog(null, "Devolucion Registrada");
+                        ventana.dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "Error");
                     }
@@ -222,4 +223,5 @@ public class Devolucion extends MouseAdapter {
     }
 
 }
+
 

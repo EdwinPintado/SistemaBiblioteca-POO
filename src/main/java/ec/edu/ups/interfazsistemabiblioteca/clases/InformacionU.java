@@ -112,14 +112,14 @@ public class InformacionU extends MouseAdapter {
                 txtArea.setText("");
                 if (!con.mostrarUsuario().isEmpty()) {
 
-                    txtArea.append("TUS AUTORES REGISTRADOS\n\n");
+                    txtArea.append("TUS Usuarios REGISTRADOS\n\n");
 
                     for (Usuario usuarios : con.mostrarUsuario()) {
                         txtArea.append(usuarios.toString() + "\n");
                     }
 
                 } else {
-                    txtArea.append("No existen autores registrados.");
+                    txtArea.append("No existen usuarios registrados.");
                 }
 
             }
@@ -148,3 +148,4 @@ public class InformacionU extends MouseAdapter {
     }
 
 }
+

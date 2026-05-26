@@ -112,14 +112,14 @@ public class InformacionL extends MouseAdapter {
                 txtArea.setText("");
                 if (!con.mostrarLibro().isEmpty()) {
 
-                    txtArea.append("TUS AUTORES REGISTRADOS\n\n");
+                    txtArea.append("Libros Registrados\n\n");
 
                     for (Libro libros : con.mostrarLibro()) {
                         txtArea.append(libros.toString() + "\n");
                     }
 
                 } else {
-                    txtArea.append("No existen autores registrados.");
+                    txtArea.append("No existen Libros registrados.");
                 }
 
             }
@@ -148,3 +148,4 @@ public class InformacionL extends MouseAdapter {
     }
 
 }
+

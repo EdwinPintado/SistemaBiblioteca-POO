@@ -29,11 +29,11 @@ public class Prestamo {
     public Prestamo() {
     }
 
-    public Prestamo(Date fechaSalida, Date fechaDevolucion, Date fechaLimite, Bibliotecario bibliotecario, Usuario usuario, List<Libro> libros) {
+    public Prestamo(Date fechaSalida, Date fechaDevolucion, Date fechaLimite, Usuario usuario, List<Libro> libros) {
         this.fechaSalida = fechaSalida;
         this.fechaDevolucion = fechaDevolucion;
         this.fechaLimite = fechaLimite;
-        this.bibliotecario = bibliotecario;
+        
         this.usuario = usuario;
         this.libros = libros;
     }

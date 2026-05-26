@@ -57,7 +57,7 @@ public class Controllers {
             int dia1,
             int mes2,
             int anio2,
-            Bibliotecario bibliotecario,
+            
             Usuario usuario,
             List<Libro> libros) {
 
@@ -68,7 +68,7 @@ public class Controllers {
                 fechaSalida,
                 null,
                 fechaLimite,
-                bibliotecario,
+                
                 usuario,
                 libros
         );
@@ -114,11 +114,11 @@ public class Controllers {
     
     public Libro crearLibro(String ISBN, String Titulo, String Editorial,
            int dia, int mes, int anio,
-           boolean disponible, Autor autor) {
+            Autor autor) {
 
         java.util.Date anioPublicacion = new java.util.Date(anio - 1900, mes - 1, dia);
 
-        Libro libro = new Libro(ISBN, Titulo, Editorial, anioPublicacion, disponible, autor);
+        Libro libro = new Libro(ISBN, Titulo, Editorial,  anioPublicacion,  autor);
         libros.add(libro);
 
         System.out.println("Se guardo su libro :) ");
