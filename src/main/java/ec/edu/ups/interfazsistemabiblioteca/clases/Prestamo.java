@@ -18,6 +18,7 @@ public class Prestamo {
     private Date fechaDevolucion;
     private Date fechaLimite;
     
+
     
     private Bibliotecario bibliotecario;
     private Usuario usuario;

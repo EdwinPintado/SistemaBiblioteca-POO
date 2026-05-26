@@ -18,19 +18,19 @@ import java.awt.event.MouseListener;
  *
  * @author kevin and Edwin
  */
-public class Informacion extends MouseAdapter {
+public class InformacionU extends MouseAdapter {
 
     private Controllers con;
     private TextArea txtArea;
 
-    public Informacion(Controllers con) {
+    public InformacionU(Controllers con) {
         this.con = con;
     }
 
     @Override
     public void mouseClicked(MouseEvent evento) {
         Frame ventana
-                = new Frame("Ingresar Autor");
+                = new Frame("Informacion Usuario");
 
         ventana.setSize(800, 500);
         ventana.setLayout(new BorderLayout());
@@ -41,10 +41,12 @@ public class Informacion extends MouseAdapter {
         menu.setBackground(Color.LIGHT_GRAY);
         Button b2 = new Button("Registrar Libros");
         b2.setBackground(Color.LIGHT_GRAY);
+        b2.addMouseListener(new InformacionL(con));
         menu.add(b2);
 
         Button b3 = new Button("Registrar Usuario");
         b3.setBackground(Color.LIGHT_GRAY);
+        b3.addMouseListener(new EsquemaRatonUser(con));
         menu.add(b3);
         Button b4 = new Button("Registro de Prestamo");
         b4.setBackground(Color.LIGHT_GRAY);
@@ -88,8 +90,9 @@ public class Informacion extends MouseAdapter {
         });
 
         ventana.add(menu, BorderLayout.WEST);
-        Label titulo = new Label("Informacion del Autor", Label.CENTER);
+        Label titulo = new Label("Informacion del Usuario", Label.CENTER);
         titulo.setFont(new Font("Arrial", Font.PLAIN, 13));
+        titulo.setBackground(Color.gray);
         panelTitulo.add(titulo);
 
         ventana.add(panelTitulo, BorderLayout.NORTH);
@@ -107,12 +110,12 @@ public class Informacion extends MouseAdapter {
             @Override
             public void mouseClicked(MouseEvent e) {
                 txtArea.setText("");
-                if (!con.mostrarAutor().isEmpty()) {
+                if (!con.mostrarUsuario().isEmpty()) {
 
                     txtArea.append("TUS AUTORES REGISTRADOS\n\n");
 
-                    for (Autor autor : con.mostrarAutor()) {
-                        txtArea.append(autor.toString() + "\n");
+                    for (Usuario usuarios : con.mostrarUsuario()) {
+                        txtArea.append(usuarios.toString() + "\n");
                     }
 
                 } else {
@@ -145,3 +148,4 @@ public class Informacion extends MouseAdapter {
     }
 
 }
+

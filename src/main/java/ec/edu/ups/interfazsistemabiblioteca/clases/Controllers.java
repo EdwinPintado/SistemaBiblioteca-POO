@@ -10,22 +10,23 @@ import java.util.List;
 
 /**
  *
- * @author kevin and Edwin 
+ * @author kevin and Edwin
  */
-
 public class Controllers {
+    
 
-    private ArrayList<Autor> autores = new ArrayList<>();
+      private ArrayList<Autor> autores = new ArrayList<>();
     private ArrayList<Libro> libros = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<Bibliotecario> bibliotecarios = new ArrayList<>();
     private List<Prestamo> prestamos = new ArrayList<>();
 
-    // AUTOR
-    
     public ArrayList<Autor> getAutores() {
         return autores;
     }
+    
+
+    
 
     public void setAutores(ArrayList<Autor> autores) {
         this.autores = autores;
@@ -49,7 +50,58 @@ public class Controllers {
 
         return autores;
     }
-    
+
+    public Prestamo crearPrestamo(int dia,
+            int mes,
+            int anio,
+            int dia1,
+            int mes2,
+            int anio2,
+            Bibliotecario bibliotecario,
+            Usuario usuario,
+            List<Libro> libros) {
+
+        Date fechaSalida = new Date(anio - 1900, mes - 1, dia);
+        Date fechaLimite = new Date(anio - 1900, mes - 1, dia);
+
+        Prestamo prestamo = new Prestamo(
+                fechaSalida,
+                null,
+                fechaLimite,
+                bibliotecario,
+                usuario,
+                libros
+        );
+
+        prestamos.add(prestamo);
+
+        System.out.println("Préstamo guardado");
+
+        return prestamo;
+
+    }
+
+    public boolean registrarDevolucion(Prestamo prestamo) {
+        if (prestamo == null) {
+                System.out.println("Prestamo no existe");
+                return false;
+            }
+        prestamo.setFechaDevolucion(new Date());
+        for(Libro libro : prestamo.getLibros()){
+            libro.setDisponible(true);
+        }
+        System.out.println("Devolucion registrada");
+        return true;
+
+    }
+
+    public Prestamo buscarPrestamo(String cedulaUsuario) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getUsuario().getCedula().equals(cedulaUsuario))
+            return prestamo;
+        }
+        return null;
+    }
     // LIBROS
     
     public ArrayList<Libro> getLibros() {
@@ -134,35 +186,5 @@ public class Controllers {
         return bibliotecarios;
     }
 
-    // PRESTAMO
-    
-    public Prestamo crearPrestamo(int dia,
-            int mes,
-            int anio,
-            int dia1,
-            int mes2,
-            int anio2,
-            Bibliotecario bibliotecario,
-            List<Libro> libros) {
 
-        Date fechaSalida = new Date(anio- 1900,mes-1,dia);
-        Date fechaLimite = new Date(anio-1900,mes-1,dia);
-
-            Prestamo prestamo = new Prestamo(
-                    fechaSalida,
-                    null,
-                    fechaLimite,
-                    bibliotecario,
-                    null,
-                    libros
-            );
-
-            prestamos.add(prestamo);
-
-            System.out.println("Préstamo guardado");
-
-            return prestamo;
-
-        
-    }
 }

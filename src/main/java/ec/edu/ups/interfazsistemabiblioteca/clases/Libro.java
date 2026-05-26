@@ -2,7 +2,7 @@
 package ec.edu.ups.interfazsistemabiblioteca.clases;
 
 import ec.edu.ups.interfazsistemabiblioteca.clases.Autor;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -68,7 +68,7 @@ public class Libro {
         return anioPublicacion;
     }
 
-    public void setAnioPublicacion(Date anioPublicacion) {
+    public void setAnioPublicacion(Date  anioPublicacion) {
         this.anioPublicacion = anioPublicacion;
     }
 
@@ -87,13 +87,7 @@ public class Libro {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
-    public boolean estaDisponible(){
-        return disponible;
-    }
-    
-    public void noEstaDisponible(boolean disponible){
-        this.disponible = disponible;
-    }
+  
 
     @Override
     public String toString() {

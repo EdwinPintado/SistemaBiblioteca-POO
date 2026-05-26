@@ -12,6 +12,7 @@ import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,17 +51,21 @@ public class EsquemaRatonUser implements MouseListener{
 
         Button b2 = new Button("Registrar Libros");
         b2.setBackground(Color.DARK_GRAY);
+        b2.addMouseListener(new EsquemaRatonLibros(con));
         menu.add(b2);
 
-        Button b3 = new Button("Registrar Libros");
+        Button b3 = new Button("Registrar Autor");
         b3.setBackground(Color.DARK_GRAY);
+        b3.addMouseListener(new EsquemaRaton(con));
         menu.add(b3);
         Button b4 = new Button("Registro de Prestamo");
         b4.setBackground(Color.DARK_GRAY);
+        b4.addMouseListener(new PrestamosInterfaz(con));
         menu.add(b4);
 
         Button b5 = new Button("Devoluciones de libros");
         b5.setBackground(Color.DARK_GRAY);
+        b5.addMouseListener(new Devolucion(con));
         menu.add(b5);
 
         Button c3 = new Button("Cerrar");
@@ -95,10 +100,7 @@ public class EsquemaRatonUser implements MouseListener{
 
         ventana.add(menu, BorderLayout.WEST);
 
-        Panel ti = new Panel(new BorderLayout());
-
-        Label titulo1 = new Label("Agregar Usuario", Label.CENTER);
-        ti.add(titulo1, BorderLayout.NORTH);
+      
 
         Panel formulario = new Panel(new GridLayout(9, 2, 10, 10));
         formulario.setBackground(Color.gray);
@@ -161,8 +163,7 @@ public class EsquemaRatonUser implements MouseListener{
         formulario.add(guardar);
         formulario.add(cancelar);
         ventana.add(formulario, BorderLayout.CENTER);
-        ti.add(formulario, BorderLayout.CENTER);
-        ventana.add(ti, BorderLayout.CENTER);
+        
         cancelar.addMouseListener(new MouseListener() {
 
             @Override
@@ -210,10 +211,7 @@ public class EsquemaRatonUser implements MouseListener{
                                 txtCorreoElectronico.getText(),
                                 txtDireccion.getText()
                         );
-
-                System.out.println(
-                        "Guardado: "
-                        + usuario.getNombre());
+                JOptionPane.showMessageDialog(null, "Usuario Guardado");
 
                 ventana.dispose();
             }
@@ -255,5 +253,4 @@ public class EsquemaRatonUser implements MouseListener{
     public void mouseExited(
             MouseEvent e) {
     }
-    
 }

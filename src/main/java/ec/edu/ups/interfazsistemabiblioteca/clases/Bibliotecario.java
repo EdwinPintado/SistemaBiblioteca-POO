@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  *
  * @author kevin and Edwin 
- */ 
+ */
 
 public class Bibliotecario extends Persona {
 
@@ -57,11 +57,17 @@ public class Bibliotecario extends Persona {
     }
 
     public void registrarDevolucion(Prestamo prestamo) {
-    if (prestamo != null) {
+        
+        if (prestamo != null) {
         prestamo.setFechaDevolucion(new Date());
-        System.out.println("Devolucion registrada por: " + codigo);
+        for(Libro libro : prestamo.getLibros()){
+            libro.setDisponible(true);
+            System.out.println("Devolucion registrada por: " + codigo);
+        }
+         
     } else {
         System.out.println("Prestamo no valido");
+        
     }
 }
 

@@ -9,13 +9,16 @@ import java.util.List;
 
 /**
  *
- * @author kevin and Edwin 
+ * @author kevin and Edwin
  */
 
 public class Usuario extends Persona {
 
     private String correoElectronico;
     private String direccion;
+
+    public Usuario() {
+    }
 
     // composicion entre usuario y prestamo
     private List<Prestamo> prestamos;
@@ -27,9 +30,13 @@ public class Usuario extends Persona {
                    Date fNacimiento,
                    String correo,
                    String direccion) {
+
         super(cedula, nombre, apellido, telefono, fNacimiento);
+
         this.correoElectronico = correo;
         this.direccion = direccion;
+
+        this.prestamos = new ArrayList<>();
     }
 
     public String getCorreoElectronico() {
@@ -89,7 +96,7 @@ public class Usuario extends Persona {
         }
 
         private Prestamo(Date fechaSalida, Object object, Date fechaLimite, Bibliotecario bibliotecario, Usuario aThis, List<Libro> libros) {
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }
 }
